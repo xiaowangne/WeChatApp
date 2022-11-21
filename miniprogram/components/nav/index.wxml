@@ -1,0 +1,9 @@
+<!--components/nav/index.wxml-->
+<view class="nav-bar">
+  <van-nav-bar  custom-style="background-color:#272a3b;padding-top:0;color:#88bf01;">
+  <view slot='title' style="color:#88bf01; font-size: 36rpx;" > 
+    {{time}}{{innerText}}
+  </view>
+  <van-icon name="envelop-o" info="9" size='50rpx'  slot="right"/>
+  </van-nav-bar>
+</view>

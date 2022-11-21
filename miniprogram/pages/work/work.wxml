@@ -1,0 +1,60 @@
+<!--pages/work.wxml-->
+<view class="container">
+  <nav-bar></nav-bar>
+  <view class="page-section1">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#88bf01" class="swiper">
+      <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <view class="swiper-item">
+            <image src="{{item}}" mode="aspectFill" />
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="page-section2">
+    <view class="tool-section">
+      <block wx:for="{{tool}}" wx:key="*this" >
+        <view class="icon" >
+          <image src="{{item.iconPath}}" mode="widthFix"/>
+          <view class="text">{{item.title}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="page-section3">
+    <view class="tools-section">
+      <block wx:for="{{tools}}" wx:key="*this">
+        <view class="tools"  bind:tap="{{item.tool.length>1? 'showPopup':''}}" data-item="{{item}}">
+          <view class="icon {{item.tool.length>1? 'icon-list':''}}"  >
+            <block wx:for="{{item.tool}}"  wx:key="*this"  wx:for-item="itemTool" wx:if="{{index < 4}}">
+            <view class="img">
+            <image src="{{itemTool.iconPath}}" mode="widthFix"/>
+            </view>
+            </block>
+          </view>
+            <view class="text">{{item.title}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <van-popup show="{{ show }}" bind:close="onClose" class="page-popup">
+  <view class="popup">
+    <view class="title">
+    {{showData.title}}
+    </view>
+    <view class="tool-box">
+      <block wx:for="{{showData.tool}}" wx:key="*this" >
+        <view class="tool" >
+        <view class="icon">
+          <image src="{{item.iconPath}}" mode="widthFix"/>
+        </view>
+          <view class="text">{{item.title}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+   
+  </van-popup>
+
+</view>
